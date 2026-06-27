@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PencariApi.FaceVerificationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="#F4F6FA"
+    Title="Verifikasi Wajah">
+
+    <Grid Padding="30">
+
+        <Border
+            WidthRequest="720"
+            Padding="32"
+            BackgroundColor="White"
+            Stroke="#E5EAF2"
+            StrokeThickness="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            StrokeShape="RoundRectangle 22">
+
+            <VerticalStackLayout Spacing="18">
+
+                <Label
+                    x:Name="LabelRole"
+                    Text="User: - | Role: -"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#101828"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    x:Name="StatusLabel"
+                    Text="Menyiapkan kamera..."
+                    FontSize="16"
+                    TextColor="#475467"
+                    HorizontalTextAlignment="Center" />
+
+                <Border
+                    Stroke="#D0D5DD"
+                    StrokeThickness="1"
+                    BackgroundColor="#101828"
+                    HeightRequest="390"
+                    StrokeShape="RoundRectangle 16">
+
+                    <Grid>
+
+                        <toolkit:CameraView
+                            x:Name="CameraView"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            MediaCaptured="OnCameraMediaCaptured"
+                            MediaCaptureFailed="OnCameraMediaCaptureFailed" />
+
+                        <Grid
+                            x:Name="CameraLoadingOverlay"
+                            BackgroundColor="#101828"
+                            IsVisible="True">
+
+                            <VerticalStackLayout
+                                Spacing="12"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+
+                                <ActivityIndicator
+                                    x:Name="CameraLoadingIndicator"
+                                    IsRunning="True"
+                                    Color="#12B76A"
+                                    WidthRequest="45"
+                                    HeightRequest="45" />
+
+                                <Label
+                                    x:Name="CameraLoadingLabel"
+                                    Text="Menyalakan kamera..."
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    HorizontalTextAlignment="Center" />
+
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </Grid>
+                </Border>
+
+                <Label
+                    Text="Arahkan wajah ke kamera. Jika layar kamera hitam, klik Refresh Kamera."
+                    FontSize="13"
+                    TextColor="#667085"
+                    HorizontalTextAlignment="Center" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                    <Button
+                        x:Name="VerifyButton"
+                        Text="VERIFIKASI SEKARANG"
+                        HeightRequest="54"
+                        CornerRadius="12"
+                        BackgroundColor="#12B76A"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Clicked="OnVerifyClicked" />
+
+                    <Button
+                        Grid.Column="1"
+                        x:Name="RefreshCameraButton"
+                        Text="REFRESH KAMERA"
+                        HeightRequest="54"
+                        CornerRadius="12"
+                        BackgroundColor="#2563EB"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Clicked="OnRefreshCameraClicked" />
+
+                </Grid>
+
+                <Button
+                    x:Name="CancelButton"
+                    Text="Kembali ke Login"
+                    HeightRequest="48"
+                    BackgroundColor="Transparent"
+                    TextColor="#EF4444"
+                    FontAttributes="Bold"
+                    Clicked="OnCancelClicked" />
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

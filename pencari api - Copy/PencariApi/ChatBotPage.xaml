@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PencariApi.ChatBotPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F6F8FC"
+    Title="AI Chat">
+
+    <Grid RowDefinitions="76,*,90" BackgroundColor="#F6F8FC">
+
+        <Frame
+            Grid.Row="0"
+            Padding="24,14"
+            HasShadow="False"
+            CornerRadius="0"
+            BackgroundColor="White"
+            BorderColor="#E5EAF2">
+
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+
+                <Button
+                    Text="←"
+                    WidthRequest="46"
+                    HeightRequest="46"
+                    CornerRadius="23"
+                    BackgroundColor="#EEF2F7"
+                    TextColor="#0D2538"
+                    FontSize="20"
+                    Clicked="OnBackClicked" />
+
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                    <Label
+                        Text="PencariApi OPTIMA AI Assistant"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#101828" />
+
+                    <Label
+                        x:Name="RoleLabel"
+                        Text="AI Chat aktif"
+                        FontSize="13"
+                        TextColor="#667085" />
+                </VerticalStackLayout>
+
+                <Frame
+                    Grid.Column="2"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    CornerRadius="24"
+                    Padding="0"
+                    HasShadow="False"
+                    BackgroundColor="#FF5A14">
+                    <Label
+                        Text="🤖"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Frame>
+
+            </Grid>
+        </Frame>
+
+        <ScrollView
+            x:Name="ChatScrollView"
+            Grid.Row="1"
+            Padding="24">
+
+            <VerticalStackLayout
+                x:Name="ChatContainer"
+                Spacing="14">
+
+                <Frame
+                    CornerRadius="18"
+                    Padding="16"
+                    HasShadow="False"
+                    BackgroundColor="White"
+                    BorderColor="#E5EAF2"
+                    HorizontalOptions="Start"
+                    MaximumWidthRequest="760">
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="PencariApi OPTIMA AI"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#FF5A14" />
+
+                        <Label
+                            Text="Halo! Saya AI Assistant PencariApi OPTIMA. Saya bisa membantu menjelaskan laporan lokasi, pos pemadam Surabaya, rute optimal, kamera IoT, algoritma genetika, dan panduan evakuasi."
+                            FontSize="14"
+                            TextColor="#344054"
+                            LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Frame
+            Grid.Row="2"
+            Padding="24,14"
+            HasShadow="False"
+            CornerRadius="0"
+            BackgroundColor="White"
+            BorderColor="#E5EAF2">
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+
+                <Frame
+                    CornerRadius="18"
+                    Padding="16,0"
+                    HasShadow="False"
+                    BorderColor="#D0D5DD"
+                    BackgroundColor="#F9FAFB">
+
+                    <Entry
+                        x:Name="MessageEntry"
+                        Placeholder="Tulis pertanyaan ke AI..."
+                        PlaceholderColor="#98A2B3"
+                        TextColor="#101828"
+                        BackgroundColor="Transparent"
+                        Completed="OnMessageCompleted" />
+                </Frame>
+
+                <Button
+                    x:Name="SendButton"
+                    Grid.Column="1"
+                    Text="Kirim"
+                    WidthRequest="110"
+                    HeightRequest="54"
+                    CornerRadius="16"
+                    BackgroundColor="#FF5A14"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Clicked="OnSendClicked" />
+
+            </Grid>
+        </Frame>
+
+    </Grid>
+</ContentPage>

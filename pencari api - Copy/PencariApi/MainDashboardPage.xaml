@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PencariApi.MainDashboardPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F6F8FC"
+    Title="PencariApi">
+
+    <Grid ColumnDefinitions="250,*" RowDefinitions="*" BackgroundColor="#F6F8FC">
+
+        <!-- SIDEBAR -->
+        <Grid Grid.Column="0" BackgroundColor="#0D2538" Padding="22,28">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <HorizontalStackLayout Spacing="12">
+                <Frame
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    CornerRadius="14"
+                    Padding="0"
+                    HasShadow="False"
+                    BackgroundColor="#FF5A14">
+                    <Label
+                        Text="🔥"
+                        FontSize="26"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label
+                        Text="PencariApi OPTIMA"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+                    <Label
+                        Text="Smart Response System"
+                        TextColor="#B8C7D6"
+                        FontSize="12" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1" Spacing="18" Margin="0,25,0,0">
+
+                <Frame
+                    CornerRadius="12"
+                    Padding="16,12"
+                    HasShadow="False"
+                    BackgroundColor="#FF5A14">
+                    <HorizontalStackLayout Spacing="14">
+                        <Label Text="▦" TextColor="White" FontSize="24" />
+                        <Label Text="Dashboard" TextColor="White" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <HorizontalStackLayout Spacing="14" Padding="16,10">
+                    <Label Text="▣" TextColor="#D7E3F0" FontSize="22" />
+                    <Label Text="Kamera IoT" TextColor="#D7E3F0" FontSize="15" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="14" Padding="16,10">
+                    <Label Text="🗺" TextColor="#D7E3F0" FontSize="20" />
+                    <Label Text="Peta Rute" TextColor="#D7E3F0" FontSize="15" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="14" Padding="16,10">
+                    <Label Text="▥" TextColor="#D7E3F0" FontSize="22" />
+                    <Label Text="Analitik" TextColor="#D7E3F0" FontSize="15" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- CONTENT -->
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout Padding="38,28" Spacing="22">
+
+                <!-- HEADER -->
+                <Grid ColumnDefinitions="*,360,170" ColumnSpacing="18">
+                    <Label
+                        Text="Optimasi Rute Pemadam Api via Kamera IoT dan Algoritma Genetika"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="#101828"
+                        VerticalOptions="Center" />
+
+                    <Frame
+                        Grid.Column="1"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        HasShadow="False"
+                        Padding="18,0"
+                        BorderColor="#E2E8F0"
+                        BackgroundColor="White">
+                        <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                            <Label Text="🔍" FontSize="18" TextColor="#667085" />
+                            <Label
+                                Text="Cari lokasi, kamera, atau unit..."
+                                TextColor="#98A2B3"
+                                FontSize="14"
+                                VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <HorizontalStackLayout Grid.Column="2" Spacing="12" VerticalOptions="Center">
+                        <Frame
+                            WidthRequest="46"
+                            HeightRequest="46"
+                            CornerRadius="23"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="#DBEAFF">
+                            <Label Text="👤" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label Text="Admin" FontSize="14" FontAttributes="Bold" TextColor="#101828" />
+                            <Label Text="Operator" FontSize="12" TextColor="#667085" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <!-- STAT CARDS -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="22">
+
+                    <Frame
+                        Grid.Column="0"
+                        CornerRadius="18"
+                        Padding="24"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <HorizontalStackLayout Spacing="22">
+                            <Frame
+                                WidthRequest="82"
+                                HeightRequest="82"
+                                CornerRadius="18"
+                                Padding="0"
+                                HasShadow="False"
+                                BackgroundColor="#FF5A14">
+                                <Label Text="🔥" FontSize="38" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label Text="Insiden Aktif" FontSize="16" FontAttributes="Bold" TextColor="#101828" />
+                                <Label Text="7" FontSize="34" FontAttributes="Bold" TextColor="#FF5A14" />
+                                <Label Text="insiden" FontSize="13" TextColor="#667085" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <Frame
+                        Grid.Column="1"
+                        CornerRadius="18"
+                        Padding="24"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <HorizontalStackLayout Spacing="22">
+                            <Frame
+                                WidthRequest="82"
+                                HeightRequest="82"
+                                CornerRadius="18"
+                                Padding="0"
+                                HasShadow="False"
+                                BackgroundColor="#6EA8E8">
+                                <Label Text="📹" FontSize="34" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label Text="Kamera Online" FontSize="16" FontAttributes="Bold" TextColor="#101828" />
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="24" FontSize="34" FontAttributes="Bold" TextColor="#6EA8E8" />
+                                    <Label Text="/ 30" FontSize="16" TextColor="#475467" VerticalOptions="End" Margin="0,0,0,7" />
+                                </HorizontalStackLayout>
+                                <Label Text="80% terhubung" FontSize="13" TextColor="#667085" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <Frame
+                        Grid.Column="2"
+                        CornerRadius="18"
+                        Padding="24"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <HorizontalStackLayout Spacing="22">
+                            <Frame
+                                WidthRequest="82"
+                                HeightRequest="82"
+                                CornerRadius="18"
+                                Padding="0"
+                                HasShadow="False"
+                                BackgroundColor="#F6C026">
+                                <Label Text="⏱" FontSize="34" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label Text="Estimasi Respon" FontSize="16" FontAttributes="Bold" TextColor="#101828" />
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="08" FontSize="34" FontAttributes="Bold" TextColor="#F6B800" />
+                                    <Label Text="menit" FontSize="16" TextColor="#475467" VerticalOptions="End" Margin="0,0,0,7" />
+                                </HorizontalStackLayout>
+                                <Label Text="Untuk lokasi terpilih" FontSize="13" TextColor="#667085" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                </Grid>
+
+                <!-- MAP + DETAIL -->
+                <Grid ColumnDefinitions="*,430" ColumnSpacing="22">
+
+                    <!-- MAP CARD -->
+                    <Frame
+                        Grid.Column="0"
+                        CornerRadius="18"
+                        Padding="22"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <VerticalStackLayout Spacing="14">
+                            <Label
+                                Text="Peta Rute Optimal"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#101828" />
+
+                            <Grid HeightRequest="320" BackgroundColor="#EEF3F8">
+                                <Grid RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*">
+                                    <BoxView Grid.Row="0" Grid.ColumnSpan="5" HeightRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" VerticalOptions="Center" />
+                                    <BoxView Grid.Row="1" Grid.ColumnSpan="5" HeightRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" VerticalOptions="Center" />
+                                    <BoxView Grid.Row="2" Grid.ColumnSpan="5" HeightRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" VerticalOptions="Center" />
+                                    <BoxView Grid.Row="3" Grid.ColumnSpan="5" HeightRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" VerticalOptions="Center" />
+                                    <BoxView Grid.Row="4" Grid.ColumnSpan="5" HeightRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" VerticalOptions="Center" />
+
+                                    <BoxView Grid.Column="0" Grid.RowSpan="5" WidthRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" HorizontalOptions="Center" />
+                                    <BoxView Grid.Column="1" Grid.RowSpan="5" WidthRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" HorizontalOptions="Center" />
+                                    <BoxView Grid.Column="2" Grid.RowSpan="5" WidthRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" HorizontalOptions="Center" />
+                                    <BoxView Grid.Column="3" Grid.RowSpan="5" WidthRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" HorizontalOptions="Center" />
+                                    <BoxView Grid.Column="4" Grid.RowSpan="5" WidthRequest="2" BackgroundColor="#FFFFFF" Opacity="0.8" HorizontalOptions="Center" />
+
+                                    <BoxView
+                                        WidthRequest="610"
+                                        HeightRequest="5"
+                                        BackgroundColor="#1677F2"
+                                        Rotation="-8"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+
+                                    <Frame
+                                        WidthRequest="62"
+                                        HeightRequest="62"
+                                        CornerRadius="31"
+                                        Padding="0"
+                                        HasShadow="False"
+                                        BackgroundColor="#FF5A14"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center"
+                                        Margin="85,20,0,0">
+                                        <Label Text="🔥" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Frame>
+
+                                    <Frame
+                                        WidthRequest="140"
+                                        HeightRequest="72"
+                                        CornerRadius="10"
+                                        Padding="12"
+                                        HasShadow="False"
+                                        BorderColor="#D9E2EC"
+                                        BackgroundColor="White"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Center"
+                                        Margin="150,-30,0,0">
+                                        <VerticalStackLayout>
+                                            <Label Text="Lokasi Kebakaran" FontSize="12" FontAttributes="Bold" TextColor="#101828" />
+                                            <Label Text="Jl. Sudirman" FontSize="12" TextColor="#475467" />
+                                            <Label Text="Jakarta Pusat" FontSize="12" TextColor="#475467" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+
+                                    <Frame
+                                        WidthRequest="86"
+                                        HeightRequest="45"
+                                        CornerRadius="10"
+                                        Padding="8"
+                                        HasShadow="False"
+                                        BorderColor="#D9E2EC"
+                                        BackgroundColor="White"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Start"
+                                        Margin="0,20,0,0">
+                                        <HorizontalStackLayout Spacing="6">
+                                            <Label Text="🏢" FontSize="20" TextColor="#FF5A14" />
+                                            <Label Text="Pos 01" FontSize="12" VerticalOptions="Center" TextColor="#101828" />
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <Frame
+                                        WidthRequest="96"
+                                        HeightRequest="50"
+                                        CornerRadius="10"
+                                        Padding="8"
+                                        HasShadow="False"
+                                        BorderColor="#D9E2EC"
+                                        BackgroundColor="White"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start"
+                                        Margin="0,40,40,0">
+                                        <HorizontalStackLayout Spacing="6">
+                                            <Label Text="🏢" FontSize="20" TextColor="#FF5A14" />
+                                            <Label Text="Pos 02" FontSize="12" VerticalOptions="Center" TextColor="#101828" />
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                    <Frame
+                                        WidthRequest="118"
+                                        HeightRequest="62"
+                                        CornerRadius="10"
+                                        Padding="10"
+                                        HasShadow="False"
+                                        BorderColor="#84B7FF"
+                                        BackgroundColor="White"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Margin="180,-10,0,0">
+                                        <VerticalStackLayout>
+                                            <Label Text="Rute Optimal" FontSize="12" FontAttributes="Bold" TextColor="#0B5ED7" />
+                                            <Label Text="ETA 08 menit" FontSize="12" TextColor="#1677F2" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+
+                                    <Frame
+                                        WidthRequest="96"
+                                        HeightRequest="50"
+                                        CornerRadius="10"
+                                        Padding="8"
+                                        HasShadow="False"
+                                        BorderColor="#D9E2EC"
+                                        BackgroundColor="White"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End"
+                                        Margin="200,0,0,20">
+                                        <HorizontalStackLayout Spacing="6">
+                                            <Label Text="🏢" FontSize="20" TextColor="#FF5A14" />
+                                            <Label Text="Pos 03" FontSize="12" VerticalOptions="Center" TextColor="#101828" />
+                                        </HorizontalStackLayout>
+                                    </Frame>
+                                </Grid>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- DETAIL CARD -->
+                    <Frame
+                        Grid.Column="1"
+                        CornerRadius="18"
+                        Padding="22"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <VerticalStackLayout Spacing="18">
+
+                            <Label Text="Detail Insiden" FontSize="18" FontAttributes="Bold" TextColor="#101828" />
+                            <BoxView HeightRequest="1" BackgroundColor="#E5EAF2" />
+
+                            <Grid ColumnDefinitions="40,*,*" RowDefinitions="52,52,52,52" RowSpacing="8">
+                                <Label Grid.Row="0" Grid.Column="0" Text="📍" FontSize="20" VerticalOptions="Center" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Lokasi" FontSize="14" TextColor="#344054" VerticalOptions="Center" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="Jl. Sudirman, Jakarta Pusat" FontSize="14" TextColor="#344054" VerticalOptions="Center" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="▣" FontSize="20" VerticalOptions="Center" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="Status" FontSize="14" TextColor="#344054" VerticalOptions="Center" />
+                                <Frame Grid.Row="1" Grid.Column="2" CornerRadius="10" Padding="10,4" HasShadow="False" BackgroundColor="#FFE8E2" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Label Text="Darurat" FontSize="13" TextColor="#FF3B1F" />
+                                </Frame>
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="↑" FontSize="22" VerticalOptions="Center" />
+                                <Label Grid.Row="2" Grid.Column="1" Text="Prioritas" FontSize="14" TextColor="#344054" VerticalOptions="Center" />
+                                <Label Grid.Row="2" Grid.Column="2" Text="Tinggi" FontSize="14" TextColor="#FF3B1F" VerticalOptions="Center" />
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="🕘" FontSize="20" VerticalOptions="Center" />
+                                <Label Grid.Row="3" Grid.Column="1" Text="Estimasi Tiba" FontSize="14" TextColor="#344054" VerticalOptions="Center" />
+                                <Label Grid.Row="3" Grid.Column="2" Text="08 menit" FontSize="14" TextColor="#1677F2" VerticalOptions="Center" />
+                            </Grid>
+
+                            <Button
+                                Text="🚒  Kirim Unit"
+                                HeightRequest="54"
+                                CornerRadius="12"
+                                BackgroundColor="#FF5A14"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="16" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- BOTTOM AREA -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="22">
+
+                    <Frame
+                        Grid.Column="0"
+                        CornerRadius="18"
+                        Padding="22"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <VerticalStackLayout Spacing="14">
+                            <Label Text="Monitoring Kamera IoT" FontSize="18" FontAttributes="Bold" TextColor="#101828" />
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                                <Frame Grid.Column="0" CornerRadius="12" Padding="0" HasShadow="False" BackgroundColor="#26384A" HeightRequest="160">
+                                    <Grid>
+                                        <BoxView BackgroundColor="#344E65" />
+                                        <Label Text="Kamera 01" TextColor="White" FontSize="13" Margin="14,12" VerticalOptions="Start" />
+                                        <HorizontalStackLayout Margin="14,0,0,14" VerticalOptions="End" Spacing="6">
+                                            <BoxView WidthRequest="10" HeightRequest="10" Color="#20C997" />
+                                            <Label Text="Online" TextColor="White" FontSize="12" />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame Grid.Column="1" CornerRadius="12" Padding="0" HasShadow="False" BackgroundColor="#26384A" HeightRequest="160">
+                                    <Grid>
+                                        <BoxView BackgroundColor="#405C73" />
+                                        <Label Text="Kamera 02" TextColor="White" FontSize="13" Margin="14,12" VerticalOptions="Start" />
+                                        <HorizontalStackLayout Margin="14,0,0,14" VerticalOptions="End" Spacing="6">
+                                            <BoxView WidthRequest="10" HeightRequest="10" Color="#20C997" />
+                                            <Label Text="Online" TextColor="White" FontSize="12" />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame
+                        Grid.Column="1"
+                        CornerRadius="18"
+                        Padding="22"
+                        HasShadow="False"
+                        BorderColor="#E5EAF2"
+                        BackgroundColor="White">
+                        <VerticalStackLayout Spacing="16">
+                            <Label Text="Analitik Algoritma Genetika" FontSize="18" FontAttributes="Bold" TextColor="#101828" />
+
+                            <Grid ColumnDefinitions="210,*">
+                                <VerticalStackLayout Grid.Column="0" Spacing="8">
+                                    <Label Text="Fitness Terbaik" FontSize="13" TextColor="#667085" />
+                                    <HorizontalStackLayout Spacing="12">
+                                        <Label Text="0.912" FontSize="28" FontAttributes="Bold" TextColor="#1677F2" />
+                                        <Label Text="↑ 2.1%" FontSize="13" TextColor="#12B76A" VerticalOptions="Center" />
+                                    </HorizontalStackLayout>
+
+                                    <Label Text="Generasi" FontSize="13" TextColor="#667085" Margin="0,12,0,0" />
+                                    <HorizontalStackLayout Spacing="4">
+                                        <Label Text="48" FontSize="22" FontAttributes="Bold" TextColor="#101828" />
+                                        <Label Text="/ 100" FontSize="17" TextColor="#667085" VerticalOptions="End" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <Grid Grid.Column="1" HeightRequest="150">
+                                    <BoxView HeightRequest="1" BackgroundColor="#E5EAF2" VerticalOptions="End" />
+                                    <BoxView WidthRequest="1" BackgroundColor="#E5EAF2" HorizontalOptions="Start" />
+
+                                    <BoxView
+                                        HeightRequest="5"
+                                        WidthRequest="330"
+                                        BackgroundColor="#1677F2"
+                                        Rotation="-14"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+
+                                    <Frame
+                                        WidthRequest="14"
+                                        HeightRequest="14"
+                                        CornerRadius="7"
+                                        Padding="0"
+                                        HasShadow="False"
+                                        BackgroundColor="#1677F2"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start"
+                                        Margin="0,24,12,0" />
+
+                                    <Label Text="0" FontSize="11" TextColor="#667085" HorizontalOptions="Start" VerticalOptions="End" Margin="0,0,0,-18" />
+                                    <Label Text="100" FontSize="11" TextColor="#667085" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,10,-18" />
+                                    <Label Text="Generasi" FontSize="12" TextColor="#667085" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,-36" />
+                                </Grid>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

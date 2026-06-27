@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PencariApi.AdminReportsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F6F8FC"
+    Title="Laporan Klien">
+
+	<Grid RowDefinitions="90,*" Padding="30" RowSpacing="20">
+
+		<Grid ColumnDefinitions="*,Auto,Auto,Auto,Auto" ColumnSpacing="12">
+
+			<VerticalStackLayout>
+				<Label
+                    Text="Laporan Klien Surabaya"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#101828"/>
+
+				<Label
+                    Text="Admin dapat melihat laporan user, lokasi kejadian, dan pos pemadam terdekat."
+                    FontSize="14"
+                    TextColor="#667085"/>
+			</VerticalStackLayout>
+
+			<Button
+                Grid.Column="1"
+                Text="Download Excel"
+                WidthRequest="140"
+                BackgroundColor="#10B981"
+                TextColor="White"
+                CornerRadius="12"
+                Clicked="OnDownloadExcelClicked"/>
+
+            <Button
+    Text="Peta Rute"
+    WidthRequest="130"
+    BackgroundColor="#12B76A"
+    TextColor="White"
+    CornerRadius="12"
+    Clicked="OnOpenAdminMapPageClicked"/>
+
+            <Button
+                Grid.Column="2"
+                Text="Refresh"
+                WidthRequest="100"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                CornerRadius="12"
+                Clicked="OnRefreshClicked"/>
+
+			<Button
+                Grid.Column="3"
+                Text="Maps Laporan"
+                WidthRequest="130"
+                BackgroundColor="#12B76A"
+                TextColor="White"
+                CornerRadius="12"
+                Clicked="OnOpenReportMapClicked"/>
+
+			<Button
+                Grid.Column="4"
+                Text="Dashboard"
+                WidthRequest="120"
+                BackgroundColor="#FF5A14"
+                TextColor="White"
+                CornerRadius="12"
+                Clicked="OnBackDashboardClicked"/>
+		</Grid>
+
+		<Grid Grid.Row="1" ColumnDefinitions="1.2*,0.8*" ColumnSpacing="20">
+
+			<!-- DATA LAPORAN -->
+			<Frame
+                Grid.Column="0"
+                Padding="20"
+                CornerRadius="18"
+                HasShadow="False"
+                BackgroundColor="White"
+                BorderColor="#E5EAF2">
+
+				<VerticalStackLayout Spacing="14">
+
+					<Label
+                        Text="Data Laporan User / Klien"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#101828"/>
+
+                    <!-- TABLE HEADER -->
+                    <Grid ColumnDefinitions="1.2*,1*,2*,1*,1*,1*" Padding="10,0" Margin="0,10,0,0">
+                        <Label Grid.Column="0" Text="Pelapor" FontSize="12" FontAttributes="Bold" TextColor="#475467" />
+                        <Label Grid.Column="1" Text="Telepon" FontSize="12" FontAttributes="Bold" TextColor="#475467" />
+                        <Label Grid.Column="2" Text="Alamat" FontSize="12" FontAttributes="Bold" TextColor="#475467" />
+                        <Label Grid.Column="3" Text="Pos Terdekat" FontSize="12" FontAttributes="Bold" TextColor="#475467" />
+                        <Label Grid.Column="4" Text="Prioritas" FontSize="12" FontAttributes="Bold" TextColor="#475467" />
+                        <Label Grid.Column="5" Text="Status" FontSize="12" FontAttributes="Bold" TextColor="#475467" />
+                    </Grid>
+                    <BoxView HeightRequest="1" Color="#E5EAF2" Margin="0,0,0,5" />
+
+					<CollectionView
+                        x:Name="ReportsCollection"
+                        SelectionMode="Single"
+                        SelectionChanged="OnReportSelected">
+
+						<CollectionView.ItemTemplate>
+							<DataTemplate>
+                                <Grid ColumnDefinitions="1.2*,1*,2*,1*,1*,1*" Padding="10,12">
+                                    
+                                    <Label Grid.Column="0" Text="{Binding ReporterName}" FontSize="13" FontAttributes="Bold" TextColor="#101828" VerticalOptions="Center"/>
+                                    <Label Grid.Column="1" Text="{Binding Phone}" FontSize="13" TextColor="#475467" VerticalOptions="Center"/>
+                                    <Label Grid.Column="2" Text="{Binding Address}" FontSize="13" TextColor="#475467" VerticalOptions="Center"/>
+                                    <Label Grid.Column="3" Text="{Binding NearestStationName}" FontSize="13" TextColor="#12B76A" VerticalOptions="Center"/>
+                                    
+                                    <Label Grid.Column="4" Text="{Binding Priority}" FontSize="13" FontAttributes="Bold" TextColor="#FF5A14" VerticalOptions="Center"/>
+                                    
+                                    <Frame Grid.Column="5" Padding="8,4" CornerRadius="8" HasShadow="False" BackgroundColor="#EFF6FF" HorizontalOptions="Start" VerticalOptions="Center">
+                                        <Label Text="{Binding Status}" FontSize="12" FontAttributes="Bold" TextColor="#2563EB"/>
+                                    </Frame>
+                                </Grid>
+							</DataTemplate>
+						</CollectionView.ItemTemplate>
+					</CollectionView>
+				</VerticalStackLayout>
+			</Frame>
+
+			<!-- DATA POS DAMKAR -->
+			<Frame
+                Grid.Column="1"
+                Padding="20"
+                CornerRadius="18"
+                HasShadow="False"
+                BackgroundColor="White"
+                BorderColor="#E5EAF2">
+
+				<VerticalStackLayout Spacing="14">
+
+					<Label
+                        Text="Data Pos Pemadam Surabaya"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#101828"/>
+
+					<CollectionView
+                        x:Name="StationsCollection"
+                        SelectionMode="Single"
+                        SelectionChanged="OnStationSelected">
+
+						<CollectionView.ItemTemplate>
+							<DataTemplate>
+								<Frame
+                                    Margin="0,8"
+                                    Padding="16"
+                                    CornerRadius="14"
+                                    HasShadow="False"
+                                    BackgroundColor="#FFF4EB"
+                                    BorderColor="#FDBA74">
+
+									<VerticalStackLayout Spacing="5">
+										<Label
+                                            Text="{Binding Name}"
+                                            FontSize="16"
+                                            FontAttributes="Bold"
+                                            TextColor="#FF5A14"/>
+
+										<Label
+                                            Text="{Binding Address}"
+                                            FontSize="13"
+                                            TextColor="#475467"/>
+
+										<Label
+                                            Text="{Binding Phone}"
+                                            FontSize="13"
+                                            TextColor="#475467"/>
+
+										<Label
+                                            Text="{Binding Area}"
+                                            FontSize="13"
+                                            TextColor="#2563EB"/>
+									</VerticalStackLayout>
+								</Frame>
+							</DataTemplate>
+						</CollectionView.ItemTemplate>
+					</CollectionView>
+				</VerticalStackLayout>
+			</Frame>
+
+		</Grid>
+	</Grid>
+</ContentPage>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PencariApi.SurabayaCctvPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F6F8FC"
+    Title="CCTV Surabaya">
+
+    <Grid RowDefinitions="90,*" Padding="24" RowSpacing="16">
+
+        <!-- HEADER -->
+        <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="12">
+
+            <VerticalStackLayout Spacing="4">
+                <Label
+                    Text="Pemantauan Kamera IoT CCTV Surabaya"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#101828" />
+
+                <Label
+                    Text="Monitoring 10 CCTV daerah Surabaya untuk mendukung deteksi dan validasi laporan kebakaran."
+                    FontSize="14"
+                    TextColor="#667085" />
+            </VerticalStackLayout>
+
+            <Button
+                Grid.Column="1"
+                Text="Refresh"
+                WidthRequest="110"
+                HeightRequest="48"
+                CornerRadius="12"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="OnRefreshClicked" />
+
+            <Button
+                Grid.Column="2"
+                Text="Buka Browser"
+                WidthRequest="140"
+                HeightRequest="48"
+                CornerRadius="12"
+                BackgroundColor="#12B76A"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="OnOpenBrowserClicked" />
+
+            <Button
+                Grid.Column="3"
+                Text="Dashboard"
+                WidthRequest="130"
+                HeightRequest="48"
+                CornerRadius="12"
+                BackgroundColor="#FF5A14"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="OnBackDashboardClicked" />
+
+        </Grid>
+
+        <!-- BODY -->
+        <Grid Grid.Row="1" ColumnDefinitions="370,*" ColumnSpacing="16">
+
+            <!-- LIST CCTV -->
+            <Frame
+                Grid.Column="0"
+                Padding="18"
+                CornerRadius="18"
+                HasShadow="False"
+                BackgroundColor="White"
+                BorderColor="#E5EAF2">
+
+                <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="14">
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Daftar Pemantau CCTV"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="#101828" />
+
+                        <Label
+                            x:Name="CctvCountLabel"
+                            Text="10 pemantau tersedia"
+                            FontSize="13"
+                            TextColor="#667085" />
+                    </VerticalStackLayout>
+
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        Color="#E5EAF2" />
+
+                    <CollectionView
+                        x:Name="CctvCollection"
+                        Grid.Row="2"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCctvSelected">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,6"
+                                    Padding="14"
+                                    CornerRadius="14"
+                                    HasShadow="False"
+                                    BackgroundColor="#FAFBFD"
+                                    BorderColor="#DCE4EF">
+
+                                    <VerticalStackLayout Spacing="6">
+
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="{Binding Name}"
+                                                FontSize="15"
+                                                FontAttributes="Bold"
+                                                TextColor="#101828" />
+
+                                            <Frame
+                                                Grid.Column="1"
+                                                Padding="8,3"
+                                                CornerRadius="8"
+                                                HasShadow="False"
+                                                BackgroundColor="#ECFDF3">
+
+                                                <Label
+                                                    Text="{Binding Status}"
+                                                    FontSize="11"
+                                                    FontAttributes="Bold"
+                                                    TextColor="#12B76A" />
+                                            </Frame>
+                                        </Grid>
+
+                                        <Label
+                                            Text="{Binding Location}"
+                                            FontSize="13"
+                                            TextColor="#475467"
+                                            LineBreakMode="TailTruncation" />
+
+                                        <Label
+                                            Text="{Binding Description}"
+                                            FontSize="12"
+                                            TextColor="#667085"
+                                            LineBreakMode="TailTruncation" />
+
+                                        <Label
+                                            Text="{Binding ShortUrl}"
+                                            FontSize="11"
+                                            TextColor="#98A2B3"
+                                            LineBreakMode="TailTruncation" />
+
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Button
+                        Grid.Row="3"
+                        Text="Tampilkan CCTV Terpilih"
+                        HeightRequest="48"
+                        CornerRadius="12"
+                        BackgroundColor="#0F2742"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Clicked="OnShowSelectedClicked" />
+
+                </Grid>
+            </Frame>
+
+            <!-- CCTV VIEWER -->
+            <Grid Grid.Column="1" RowDefinitions="155,*" RowSpacing="16">
+
+                <!-- DETAIL CCTV -->
+                <Frame
+                    Grid.Row="0"
+                    Padding="18"
+                    CornerRadius="18"
+                    HasShadow="False"
+                    BackgroundColor="White"
+                    BorderColor="#E5EAF2">
+
+                    <Grid ColumnDefinitions="1.2*,1*,1*" ColumnSpacing="16">
+
+                        <VerticalStackLayout Spacing="8">
+                            <Label
+                                Text="Detail Kamera"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#101828" />
+
+                            <Label
+                                x:Name="SelectedCctvNameLabel"
+                                Text="Pilih salah satu CCTV"
+                                FontSize="17"
+                                FontAttributes="Bold"
+                                TextColor="#FF5A14" />
+
+                            <Label
+                                x:Name="SelectedCctvLocationLabel"
+                                Text="Lokasi: -"
+                                FontSize="13"
+                                TextColor="#475467" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label
+                                Text="Status Streaming"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#101828" />
+
+                            <Label
+                                x:Name="SelectedCctvStatusLabel"
+                                Text="Status: -"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="#12B76A" />
+
+                            <Label
+                                x:Name="SelectedCctvModeLabel"
+                                Text="Mode: WebView CCTV"
+                                FontSize="13"
+                                TextColor="#475467" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="2" Spacing="8">
+                            <Label
+                                Text="Keterangan"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#101828" />
+
+                            <Label
+                                x:Name="SelectedCctvDescriptionLabel"
+                                Text="CCTV akan tampil setelah dipilih."
+                                FontSize="13"
+                                TextColor="#475467" />
+
+                            <Label
+                                x:Name="SelectedCctvUrlLabel"
+                                Text="URL: -"
+                                FontSize="12"
+                                TextColor="#98A2B3"
+                                LineBreakMode="TailTruncation" />
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </Frame>
+
+                <!-- LIVE CCTV -->
+                <Frame
+                    Grid.Row="1"
+                    Padding="0"
+                    CornerRadius="18"
+                    IsClippedToBounds="True"
+                    HasShadow="False"
+                    BackgroundColor="#101828"
+                    BorderColor="#E5EAF2">
+
+                    <Grid>
+
+                        <WebView
+                            x:Name="CctvWebView"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            Navigating="OnCctvNavigating"
+                            Navigated="OnCctvNavigated" />
+
+                        <Frame
+                            x:Name="CctvLoadingFrame"
+                            Padding="20"
+                            CornerRadius="14"
+                            HasShadow="False"
+                            BackgroundColor="#F9FAFB"
+                            BorderColor="#E5EAF2"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+
+                            <VerticalStackLayout Spacing="8">
+
+                                <ActivityIndicator
+                                    x:Name="CctvLoadingIndicator"
+                                    IsRunning="True"
+                                    Color="#FF5A14"
+                                    WidthRequest="40"
+                                    HeightRequest="40" />
+
+                                <Label
+                                    x:Name="CctvLoadingLabel"
+                                    Text="Memuat CCTV..."
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="#475467"
+                                    HorizontalTextAlignment="Center" />
+
+                            </VerticalStackLayout>
+                        </Frame>
+
+                    </Grid>
+                </Frame>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</ContentPage>
